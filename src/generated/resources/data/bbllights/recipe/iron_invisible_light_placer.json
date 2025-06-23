@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "invisible_light",
+  "key": {
+    "C": "#c:storage_blocks/coal",
+    "I": "#c:ingots/iron",
+    "L": "bbllights:invisible_light"
+  },
+  "pattern": [
+    " C ",
+    "ILI",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "bbllights:iron_invisible_light_placer"
+  }
+}

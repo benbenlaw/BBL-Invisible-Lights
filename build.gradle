@@ -63,7 +63,7 @@ neoForge {
     }
 
     mods {
-        template {
+        bbllights {
             sourceSet sourceSets.main
         }
     }
@@ -78,8 +78,8 @@ configurations {
 dependencies {
 
     //BBL Core
-    compileOnly "curse.maven:bbl-core-1135181:6679405"
-    runtimeOnly "curse.maven:bbl-core-1135181:6679405"
+    compileOnly "curse.maven:bbl-core-1135181:6686236"
+    runtimeOnly "curse.maven:bbl-core-1135181:6686236"
 
 }
 

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "invisible_light",
+  "key": {
+    "C": "#c:storage_blocks/coal",
+    "D": "#c:gems/diamond",
+    "I": "bbllights:iron_invisible_light_placer"
+  },
+  "pattern": [
+    " C ",
+    "DID",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "bbllights:diamond_invisible_light_placer"
+  }
+}

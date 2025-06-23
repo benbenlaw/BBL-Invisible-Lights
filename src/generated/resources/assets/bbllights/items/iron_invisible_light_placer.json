@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "bbllights:item/iron_invisible_light_placer"
+  }
+}
