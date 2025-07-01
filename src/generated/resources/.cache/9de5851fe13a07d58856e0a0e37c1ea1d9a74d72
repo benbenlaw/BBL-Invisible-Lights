@@ -1,9 +1,9 @@
-// 1.21.7	2025-07-01T15:00:45.7887757	Model Definitions - bbllights
+// 1.21.7	2025-07-01T15:04:04.9900041	Model Definitions - bbllights
 ebc92fa8ccd9cfcf3fb630b0c12f0cfd6c0837cc assets/bbllights/items/diamond_invisible_light_placer.json
 0226a139584caa5737d9592c07096982bac77bf4 assets/bbllights/items/invisible_light.json
 90779cc604a47b2b93e708c5db5a82ee520f4dae assets/bbllights/items/iron_invisible_light_placer.json
 ea24d34df5494612836534119fcddbcafdaad021 assets/bbllights/items/netherite_invisible_light_placer.json
-a1c89fd03affbd2c22b080b527c0f51e33e80510 assets/bbllights/models/item/diamond_invisible_light_placer.json
+621e8ec674a45724ce25f57a879cf067297a6b77 assets/bbllights/models/item/diamond_invisible_light_placer.json
 5e5f4d396f05e3da1917d623935487a310de238e assets/bbllights/models/item/invisible_light.json
-090aba32094efbce331b525ca294aa640c858843 assets/bbllights/models/item/iron_invisible_light_placer.json
-cc8ee4b7adea39c20b0e903cb5f147066fdb9adf assets/bbllights/models/item/netherite_invisible_light_placer.json
+222c61f9ca4b678fd0379bb0371b0dbcda14d895 assets/bbllights/models/item/iron_invisible_light_placer.json
+307d399574a50908fc241f256687358ae69efe61 assets/bbllights/models/item/netherite_invisible_light_placer.json

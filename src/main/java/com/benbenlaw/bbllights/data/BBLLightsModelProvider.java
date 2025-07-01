@@ -18,9 +18,9 @@ public class BBLLightsModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
 
         itemModels.generateFlatItem(BBLLightsItems.INVISIBLE_LIGHT.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(BBLLightsItems.IRON_INVISIBLE_LIGHT_PLACER.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(BBLLightsItems.DIAMOND_INVISIBLE_LIGHT_PLACER.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(BBLLightsItems.NETHERITE_INVISIBLE_LIGHT_PLACER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(BBLLightsItems.IRON_INVISIBLE_LIGHT_PLACER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(BBLLightsItems.DIAMOND_INVISIBLE_LIGHT_PLACER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(BBLLightsItems.NETHERITE_INVISIBLE_LIGHT_PLACER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
     }
 }
