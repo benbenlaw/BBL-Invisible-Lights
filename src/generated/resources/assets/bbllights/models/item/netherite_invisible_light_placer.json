@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bbllights:item/netherite_invisible_light_placer"
+  }
+}
