@@ -152,6 +152,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addRequirement("bbl-core")
     mainFile.releaseType = "release"
     mainFile.gameVersions.addAll(minecraft_version)
+    mainFile.addModLoader("neoforge")
 }
 
 tasks.getByName("modrinth").setGroup("modpublishing")
