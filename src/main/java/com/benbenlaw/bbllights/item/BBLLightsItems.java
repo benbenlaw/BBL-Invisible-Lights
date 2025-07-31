@@ -1,7 +1,6 @@
 package com.benbenlaw.bbllights.item;
 
 import com.benbenlaw.bbllights.BBLLights;
-import com.benbenlaw.core.item.LightItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;

@@ -5,7 +5,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.78'
+    id 'net.neoforged.moddev' version '2.0.73'
     id 'net.darkhax.curseforgegradle' version '1.1.24'
     id "com.modrinth.minotaur" version "2.+"
 }
@@ -24,19 +24,21 @@ repositories {
         }
     }
 }
-
 base {
     archivesName = mod_id
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
+
+
+
 neoForge {
     version = project.neo_version
 
     parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
+        minecraftVersion = '1.21.1'
+        mappingsVersion = '2024.11.17'
     }
 
     runs {
@@ -57,7 +59,7 @@ neoForge {
         }
 
         data {
-            clientData()
+            data()
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
     }
@@ -71,15 +73,36 @@ neoForge {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-configurations {
-    runtimeClasspath.extendsFrom localRuntime
-}
-
 dependencies {
+    //JEI
 
-    //BBL Core
-    compileOnly "curse.maven:bbl-core-1135181:6716705"
-    runtimeOnly "curse.maven:bbl-core-1135181:6716705"
+    compileOnly "curse.maven:jei-238222:5606861"
+    runtimeOnly "curse.maven:jei-238222:5606861"
+
+    //KubeJS
+    compileOnly "curse.maven:kubejs-238086:5631423"
+    runtimeOnly "curse.maven:kubejs-238086:5631423"
+
+    //Rhino
+    compileOnly "curse.maven:rhino-416294:5650008"
+    runtimeOnly "curse.maven:rhino-416294:5650008"
+
+    //BH Menu
+    compileOnly "curse.maven:bisecthosting-server-integration-menu-neoforge-1084468:5762091"
+    runtimeOnly "curse.maven:bisecthosting-server-integration-menu-neoforge-1084468:5762091"
+
+    //Just Dire Things
+    compileOnly "curse.maven:just-dire-things-1002348:6369120"
+    runtimeOnly "curse.maven:just-dire-things-1002348:6369120"
+
+    //Mekanism
+    //compileOnly "curse.maven:mekanism-268560:5574951"
+    //runtimeOnly "curse.maven:mekanism-268560:5574951"
+
+    //EMI
+
+    //compileOnly "curse.maven:emi-580555:5619579"
+    //runtimeOnly "curse.maven:emi-580555:5619579"
 
 }
 
@@ -104,7 +127,6 @@ tasks.withType(ProcessResources).configureEach {
     }
 }
 
-// Example configuration to allow publishing using the maven-publish plugin
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
@@ -130,7 +152,6 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
-// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {
     module {
         downloadSources = true
@@ -138,38 +159,38 @@ idea {
     }
 }
 
-
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     group "modpublishing"
 
     apiToken = System.getenv("curseforge_token").toString()
 
-    def projectId = 1297281
+    def projectId = 1135181
     def mainFile = upload(projectId, jar)
 
     mainFile.changelog = changelog
-    mainFile.addOptional("jei") // JEI
-    mainFile.addRequirement("bbl-core")
     mainFile.releaseType = "release"
-    mainFile.gameVersions.addAll(minecraft_version)
+    mainFile.gameVersions.addAll("1.21", "1.21.1")
     mainFile.addModLoader("neoforge")
+    mainFile.addEnvironment("Client", "Server")
+
 }
+
 
 tasks.getByName("modrinth").setGroup("modpublishing")
 
 modrinth {
     token = System.getenv("modrinth_token").toString()
-    projectId = "UI6gFMOn"
+    projectId = "tfpHINm8"
     versionType = "release"
     versionName = "bbllights-" + "$minecraft_version" + "-" + "$mod_version"
     uploadFile = jar // With Loom, this MUST be set to `remapJar` instead of `jar`!
 
-    gameVersions.addAll(minecraft_version)
+    gameVersions.addAll("1.21", "1.21.1")
 
     loaders = ["neoforge"]
     changelog = project.changelog
     dependencies {
         optional.project "jei"
-        required.project "bbl-core"
     }
 }
+
