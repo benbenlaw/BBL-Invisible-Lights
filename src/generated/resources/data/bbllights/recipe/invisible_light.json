@@ -1,9 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "invisible_light",
+  "group": "iron_ingot",
   "ingredients": [
-    "minecraft:torch"
+    {
+      "item": "minecraft:torch"
+    }
   ],
   "result": {
     "count": 2,

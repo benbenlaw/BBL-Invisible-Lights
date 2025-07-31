@@ -1,9 +1,16 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": "#minecraft:netherite_tool_materials",
-  "base": "bbllights:diamond_invisible_light_placer",
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "base": {
+    "item": "bbllights:diamond_invisible_light_placer"
+  },
   "result": {
+    "count": 1,
     "id": "bbllights:netherite_invisible_light_placer"
   },
-  "template": "minecraft:netherite_upgrade_smithing_template"
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
 }
