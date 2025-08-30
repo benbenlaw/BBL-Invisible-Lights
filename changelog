@@ -1,5 +1,8 @@
 Changelog BBL Invisible Lights
 
+1.1.2
+Fixed invisible lights overriding blocks with the light block if clicked on a block that isn't a full size block
+
 1.1.1
 Fixed loader not being set in updates
 

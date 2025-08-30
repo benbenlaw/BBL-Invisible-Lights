@@ -17,6 +17,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LightBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -65,7 +67,7 @@ public class LightItem extends Item {
 
             if (current.is(Blocks.LIGHT)) {
                 level.removeBlock(lightPos, false);
-            } else {
+            } else if (level.getBlockState(lightPos).canBeReplaced()) {
                 level.setBlockAndUpdate(lightPos, Blocks.LIGHT.defaultBlockState().setValue(LightBlock.LEVEL, lightLevel));
                 if (litItem.isDamageableItem()) {
                     litItem.hurtAndBreak(1, player, slot);
