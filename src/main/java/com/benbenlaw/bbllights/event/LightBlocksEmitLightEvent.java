@@ -21,7 +21,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,59 +78,56 @@ public class LightBlocksEmitLightEvent {
 
     // Render the light level above Light Blocks in the world
     @SubscribeEvent
-    public static void onClientWorldRender(RenderLevelStageEvent event) {
+    public static void onClientWorldRender(RenderLevelStageEvent.AfterTranslucentBlocks event) {
 
-        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) {
-
-            Minecraft mc = Minecraft.getInstance();
-            if (mc.player == null || mc.level == null) {
-                return;
-            }
-
-            ItemStack lightItem = mc.player.getMainHandItem();
-            if (!(lightItem.getItem() instanceof LightItem)) {
-                return;
-            }
-
-            PoseStack poseStack = event.getPoseStack();
-            Font font = mc.font;
-
-            BlockPos playerPos = mc.player.blockPosition();
-            int radius = 16;
-
-            for (BlockPos pos : BlockPos.betweenClosed(
-                    playerPos.offset(-radius, -radius, -radius),
-                    playerPos.offset(radius, radius, radius))) {
-
-                BlockState state = mc.level.getBlockState(pos);
-                if (!state.is(Blocks.LIGHT)) continue;
-
-                int lightLevel = state.getValue(LightBlock.LEVEL);
-
-                double x = pos.getX() + 0.5;
-                double y = pos.getY() + 0.75;
-                double z = pos.getZ() + 0.5;
-
-                poseStack.pushPose();
-                poseStack.translate(
-                        x - mc.getEntityRenderDispatcher().camera.getPosition().x,
-                        y - mc.getEntityRenderDispatcher().camera.getPosition().y,
-                        z - mc.getEntityRenderDispatcher().camera.getPosition().z
-                );
-                poseStack.mulPose(mc.getEntityRenderDispatcher().camera.rotation());
-                poseStack.scale(0.02f, -0.02f, 0.02f);
-
-                float width = font.width(String.valueOf(lightLevel)) / 2f;
-                font.drawInBatch(
-                        String.valueOf(lightLevel), -width, 0, 0xFFFFFFFF,
-                        false, poseStack.last().pose(), mc.renderBuffers().bufferSource(),
-                        Font.DisplayMode.SEE_THROUGH, 0, LightTexture.FULL_BRIGHT
-                );
-                poseStack.popPose();
-            }
-            mc.renderBuffers().bufferSource().endBatch();
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player == null || mc.level == null) {
+            return;
         }
 
+        ItemStack lightItem = mc.player.getMainHandItem();
+        if (!(lightItem.getItem() instanceof LightItem)) {
+            return;
+        }
+
+        PoseStack poseStack = event.getPoseStack();
+        Font font = mc.font;
+
+        BlockPos playerPos = mc.player.blockPosition();
+        int radius = 16;
+
+        for (BlockPos pos : BlockPos.betweenClosed(
+                playerPos.offset(-radius, -radius, -radius),
+                playerPos.offset(radius, radius, radius))) {
+
+            BlockState state = mc.level.getBlockState(pos);
+            if (!state.is(Blocks.LIGHT)) continue;
+
+            int lightLevel = state.getValue(LightBlock.LEVEL);
+
+            double x = pos.getX() + 0.5;
+            double y = pos.getY() + 0.75;
+            double z = pos.getZ() + 0.5;
+
+            poseStack.pushPose();
+            poseStack.translate(
+                    x - mc.getEntityRenderDispatcher().camera.getPosition().x,
+                    y - mc.getEntityRenderDispatcher().camera.getPosition().y,
+                    z - mc.getEntityRenderDispatcher().camera.getPosition().z
+            );
+            poseStack.mulPose(mc.getEntityRenderDispatcher().camera.rotation());
+            poseStack.scale(0.02f, -0.02f, 0.02f);
+
+            float width = font.width(String.valueOf(lightLevel)) / 2f;
+            font.drawInBatch(
+                    String.valueOf(lightLevel), -width, 0, 0xFFFFFFFF,
+                    false, poseStack.last().pose(), mc.renderBuffers().bufferSource(),
+                    Font.DisplayMode.SEE_THROUGH, 0, LightTexture.FULL_BRIGHT
+            );
+            poseStack.popPose();
+        }
+
+        mc.renderBuffers().bufferSource().endBatch();
     }
 
 
@@ -153,12 +150,11 @@ public class LightBlocksEmitLightEvent {
             }
 
             if (changed) {
-                PacketDistributor.sendToServer(new LightItemPacket(lightLevel));
-
+                ClientPacketDistributor.sendToServer(new LightItemPacket(lightLevel));
                 stack.set(LIGHT_LEVEL, lightLevel);
 
                 mc.gui.setOverlayMessage(
-                        Component.translatable("tooltips.bbllights.light_item", lightLevel),
+                        Component.translatable("tooltip.core.light_level", lightLevel),
                         false
                 );
 

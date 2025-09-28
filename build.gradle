@@ -5,7 +5,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.73'
+    id 'net.neoforged.moddev' version '2.0.107'
     id 'net.darkhax.curseforgegradle' version '1.1.24'
     id "com.modrinth.minotaur" version "2.+"
 }
@@ -22,6 +22,14 @@ repositories {
         content {
             includeGroup("curse.maven")
         }
+    }
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
     }
 }
 base {
@@ -58,14 +66,14 @@ neoForge {
             programArgument '--nogui'
         }
 
-        data {
-            data()
+        clientData {
+            clientData()
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
     }
 
     mods {
-        bbllights {
+        "${mod_id}" {
             sourceSet sourceSets.main
         }
     }
@@ -74,36 +82,9 @@ neoForge {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
+
     //JEI
-
-    compileOnly "curse.maven:jei-238222:5606861"
-    runtimeOnly "curse.maven:jei-238222:5606861"
-
-    //KubeJS
-    compileOnly "curse.maven:kubejs-238086:5631423"
-    runtimeOnly "curse.maven:kubejs-238086:5631423"
-
-    //Rhino
-    compileOnly "curse.maven:rhino-416294:5650008"
-    runtimeOnly "curse.maven:rhino-416294:5650008"
-
-    //BH Menu
-    compileOnly "curse.maven:bisecthosting-server-integration-menu-neoforge-1084468:5762091"
-    runtimeOnly "curse.maven:bisecthosting-server-integration-menu-neoforge-1084468:5762091"
-
-    //Just Dire Things
-    compileOnly "curse.maven:just-dire-things-1002348:6369120"
-    runtimeOnly "curse.maven:just-dire-things-1002348:6369120"
-
-    //Mekanism
-    //compileOnly "curse.maven:mekanism-268560:5574951"
-    //runtimeOnly "curse.maven:mekanism-268560:5574951"
-
-    //EMI
-
-    //compileOnly "curse.maven:emi-580555:5619579"
-    //runtimeOnly "curse.maven:emi-580555:5619579"
-
+    implementation("mezz.jei:jei-${jei_mc_version}:${jei_version}")
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -169,7 +150,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
 
     mainFile.changelog = changelog
     mainFile.releaseType = "release"
-    mainFile.gameVersions.addAll("1.21", "1.21.1")
+    mainFile.gameVersions.addAll("1.21", "1.21.8")
     mainFile.addModLoader("neoforge")
     mainFile.addEnvironment("Client", "Server")
 
@@ -185,7 +166,7 @@ modrinth {
     versionName = "bbllights-" + "$minecraft_version" + "-" + "$mod_version"
     uploadFile = jar // With Loom, this MUST be set to `remapJar` instead of `jar`!
 
-    gameVersions.addAll("1.21", "1.21.1")
+    gameVersions.addAll("1.21", "1.21.8")
 
     loaders = ["neoforge"]
     changelog = project.changelog

@@ -1,16 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "invisible_light",
   "key": {
-    "C": {
-      "tag": "c:storage_blocks/coal"
-    },
-    "I": {
-      "tag": "c:ingots/iron"
-    },
-    "L": {
-      "item": "bbllights:invisible_light"
-    }
+    "C": "#c:storage_blocks/coal",
+    "I": "#c:ingots/iron",
+    "L": "bbllights:invisible_light"
   },
   "pattern": [
     " C ",

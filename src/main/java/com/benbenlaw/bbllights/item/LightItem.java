@@ -12,16 +12,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LightBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 
 public class LightItem extends Item {
     public LightItem(Properties properties) {
@@ -67,7 +67,7 @@ public class LightItem extends Item {
 
             if (current.is(Blocks.LIGHT)) {
                 level.removeBlock(lightPos, false);
-            } else if (level.getBlockState(lightPos).canBeReplaced()) {
+            } else {
                 level.setBlockAndUpdate(lightPos, Blocks.LIGHT.defaultBlockState().setValue(LightBlock.LEVEL, lightLevel));
                 if (litItem.isDamageableItem()) {
                     litItem.hurtAndBreak(1, player, slot);
@@ -80,15 +80,17 @@ public class LightItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
-
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> componentConsumer, TooltipFlag flag) {
+
         int lightLevel = stack.getOrDefault(BBLLightsDataComponents.LIGHT_LEVEL.get(), 15);
 
         if (Screen.hasShiftDown()) {
-            tooltipComponents.add(Component.translatable("tooltips.bbllights.light_item", lightLevel));
+            componentConsumer.accept(Component.translatable("tooltip.bbllights.light_level", lightLevel).copy().withStyle(ChatFormatting.YELLOW));
         } else {
-            tooltipComponents.add(Component.translatable("tooltips.bbllights.shift").withStyle(ChatFormatting.YELLOW));
+            componentConsumer.accept(Component.translatable("tooltips.bbllights.shift").withStyle(ChatFormatting.YELLOW));
         }
+
+        //componentConsumer.accept(Component.translatable("tooltip.core.light_level", lightLevel));
     }
 }

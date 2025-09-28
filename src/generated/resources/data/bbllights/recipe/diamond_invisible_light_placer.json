@@ -3,15 +3,9 @@
   "category": "misc",
   "group": "invisible_light",
   "key": {
-    "C": {
-      "tag": "c:storage_blocks/coal"
-    },
-    "D": {
-      "tag": "c:gems/diamond"
-    },
-    "I": {
-      "item": "bbllights:iron_invisible_light_placer"
-    }
+    "C": "#c:storage_blocks/coal",
+    "D": "#c:gems/diamond",
+    "I": "bbllights:iron_invisible_light_placer"
   },
   "pattern": [
     " C ",
