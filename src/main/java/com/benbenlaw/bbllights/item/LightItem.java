@@ -1,6 +1,7 @@
 package com.benbenlaw.bbllights.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -85,7 +86,7 @@ public class LightItem extends Item {
 
         int lightLevel = stack.getOrDefault(BBLLightsDataComponents.LIGHT_LEVEL.get(), 15);
 
-        if (Screen.hasShiftDown()) {
+        if (Minecraft.getInstance().hasShiftDown()) {
             componentConsumer.accept(Component.translatable("tooltip.bbllights.light_level", lightLevel).copy().withStyle(ChatFormatting.YELLOW));
         } else {
             componentConsumer.accept(Component.translatable("tooltips.bbllights.shift").withStyle(ChatFormatting.YELLOW));
