@@ -111,9 +111,9 @@ public class LightBlocksEmitLightEvent {
 
             poseStack.pushPose();
             poseStack.translate(
-                    x - mc.getEntityRenderDispatcher().camera.getPosition().x,
-                    y - mc.getEntityRenderDispatcher().camera.getPosition().y,
-                    z - mc.getEntityRenderDispatcher().camera.getPosition().z
+                    x - mc.getEntityRenderDispatcher().camera.position().x,
+                    y - mc.getEntityRenderDispatcher().camera.position().y,
+                    z - mc.getEntityRenderDispatcher().camera.position().z
             );
             poseStack.mulPose(mc.getEntityRenderDispatcher().camera.rotation());
             poseStack.scale(0.02f, -0.02f, 0.02f);
@@ -154,7 +154,7 @@ public class LightBlocksEmitLightEvent {
                 stack.set(LIGHT_LEVEL, lightLevel);
 
                 mc.gui.setOverlayMessage(
-                        Component.translatable("tooltip.core.light_level", lightLevel),
+                        Component.translatable("tooltip.bbllights.light_level", lightLevel),
                         false
                 );
 

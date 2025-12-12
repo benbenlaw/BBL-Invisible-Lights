@@ -87,11 +87,9 @@ public class LightItem extends Item {
         int lightLevel = stack.getOrDefault(BBLLightsDataComponents.LIGHT_LEVEL.get(), 15);
 
         if (Minecraft.getInstance().hasShiftDown()) {
-            componentConsumer.accept(Component.translatable("tooltip.bbllights.light_level", lightLevel).copy().withStyle(ChatFormatting.YELLOW));
+            componentConsumer.accept(Component.translatable("tooltip.bbllights.light_level", lightLevel).copy().withStyle(ChatFormatting.BLUE));
         } else {
             componentConsumer.accept(Component.translatable("tooltips.bbllights.shift").withStyle(ChatFormatting.YELLOW));
         }
-
-        //componentConsumer.accept(Component.translatable("tooltip.core.light_level", lightLevel));
     }
 }
