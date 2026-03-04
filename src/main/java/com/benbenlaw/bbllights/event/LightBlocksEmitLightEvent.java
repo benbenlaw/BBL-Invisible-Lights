@@ -6,7 +6,7 @@ import com.benbenlaw.bbllights.network.LightItemPacket;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.Lightmap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LightBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.lighting.LevelLightEngine;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -122,7 +123,7 @@ public class LightBlocksEmitLightEvent {
             font.drawInBatch(
                     String.valueOf(lightLevel), -width, 0, 0xFFFFFFFF,
                     false, poseStack.last().pose(), mc.renderBuffers().bufferSource(),
-                    Font.DisplayMode.SEE_THROUGH, 0, LightTexture.FULL_BRIGHT
+                    Font.DisplayMode.SEE_THROUGH, 0, LevelLightEngine.LIGHT_SECTION_PADDING
             );
             poseStack.popPose();
         }
