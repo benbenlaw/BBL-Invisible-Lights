@@ -10,16 +10,16 @@ public class BBLLightsItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(BBLLights.MOD_ID);
 
     public static final DeferredItem<Item> INVISIBLE_LIGHT = ITEMS.registerItem("invisible_light",
-            properties -> new LightItem(new Item.Properties()));
+            LightItem::new);
 
     public static final DeferredItem<Item> IRON_INVISIBLE_LIGHT_PLACER = ITEMS.registerItem("iron_invisible_light_placer",
-            properties -> new LightItem(new Item.Properties().durability(121)));
+            properties -> new LightItem(properties.durability(121)));
 
     public static final DeferredItem<Item> DIAMOND_INVISIBLE_LIGHT_PLACER = ITEMS.registerItem("diamond_invisible_light_placer",
-            properties -> new LightItem(new Item.Properties().durability(418)));
+            properties -> new LightItem(properties.durability(418)));
 
     public static final DeferredItem<Item> NETHERITE_INVISIBLE_LIGHT_PLACER = ITEMS.registerItem("netherite_invisible_light_placer",
-            properties -> new LightItem(new Item.Properties().durability(961)));
+            properties -> new LightItem(properties.durability(961)));
 
 }
 
