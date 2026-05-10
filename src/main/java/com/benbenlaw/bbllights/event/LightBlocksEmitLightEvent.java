@@ -58,20 +58,30 @@ public class LightBlocksEmitLightEvent {
 
         // Execute only if the held item is a LightItem
         if (lightItem.getItem() instanceof LightItem) {
-            BlockPos playerPos = Minecraft.getInstance().player.blockPosition();
+
+            lightBlockPositions.clear();
+
+            BlockPos playerPos = minecraft.player.blockPosition();
             int radius = 32;
 
-            for (BlockPos pos : BlockPos.betweenClosed(playerPos.offset(-radius, -radius, -radius), playerPos.offset(radius, radius, radius))) {
+            for (BlockPos pos : BlockPos.betweenClosed(
+                    playerPos.offset(-radius, -radius, -radius),
+                    playerPos.offset(radius, radius, radius))) {
+
                 assert level != null;
                 if (level.getBlockState(pos).is(Blocks.LIGHT)) {
-                    lightBlockPositions.add(pos);
+
+                    lightBlockPositions.add(pos.immutable());
 
                     double x = pos.getX() + 0.5;
                     double y = pos.getY() + 0.5;
                     double z = pos.getZ() + 0.5;
 
-                    level.addParticle(ParticleTypes.END_ROD, x, y, z, 0.0, 0.0, 0.0);
-
+                    level.addParticle(
+                            ParticleTypes.END_ROD,
+                            x, y, z,
+                            0.0, 0.0, 0.0
+                    );
                 }
             }
         }
@@ -93,13 +103,7 @@ public class LightBlocksEmitLightEvent {
 
         PoseStack poseStack = event.getPoseStack();
         Font font = mc.font;
-
-        BlockPos playerPos = mc.player.blockPosition();
-        int radius = 16;
-
-        for (BlockPos pos : BlockPos.betweenClosed(
-                playerPos.offset(-radius, -radius, -radius),
-                playerPos.offset(radius, radius, radius))) {
+        for (BlockPos pos : lightBlockPositions) {
 
             BlockState state = mc.level.getBlockState(pos);
             if (!state.is(Blocks.LIGHT)) continue;
