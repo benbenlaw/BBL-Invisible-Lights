@@ -3,7 +3,7 @@
   "item.bbllights.invisible_light": "Невидимый свет",
   "item.bbllights.iron_invisible_light_placer": "Железный установщик невидимого света",
   "item.bbllights.netherite_invisible_light_placer": "Незеритовый установщик невидимого света",
-  "itemGroup.bbllights": "Невидимый свет BBL",
+  "itemGroup.bbllights": "BBL Invisible Lights",
   "tooltips.bbllights.light_item": "Разместит свет уровня %s",
   "tooltips.bbllights.shift": "SHIFT для доп. информации"
 }
