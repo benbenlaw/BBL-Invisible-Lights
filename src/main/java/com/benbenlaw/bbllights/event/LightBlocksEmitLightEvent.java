@@ -115,6 +115,7 @@ public class LightBlocksEmitLightEvent {
             double z = pos.getZ() + 0.5;
 
             poseStack.pushPose();
+            assert mc.getEntityRenderDispatcher().camera != null;
             poseStack.translate(
                     x - mc.getEntityRenderDispatcher().camera.position().x,
                     y - mc.getEntityRenderDispatcher().camera.position().y,

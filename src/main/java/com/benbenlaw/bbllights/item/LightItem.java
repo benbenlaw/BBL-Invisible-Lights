@@ -68,13 +68,15 @@ public class LightItem extends Item {
 
             if (current.is(Blocks.LIGHT)) {
                 level.removeBlock(lightPos, false);
-            } else {
+            } else if (current.canBeReplaced()) {
                 level.setBlockAndUpdate(lightPos, Blocks.LIGHT.defaultBlockState().setValue(LightBlock.LEVEL, lightLevel));
                 if (litItem.isDamageableItem()) {
                     litItem.hurtAndBreak(1, player, slot);
                 } else {
                     litItem.shrink(1);
                 }
+            } else {
+                return InteractionResult.PASS;
             }
         }
 
@@ -89,7 +91,7 @@ public class LightItem extends Item {
         if (Minecraft.getInstance().hasShiftDown()) {
             componentConsumer.accept(Component.translatable("tooltip.bbllights.light_level", lightLevel).copy().withStyle(ChatFormatting.BLUE));
         } else {
-            componentConsumer.accept(Component.translatable("tooltips.bbllights.shift").withStyle(ChatFormatting.YELLOW));
+            componentConsumer.accept(Component.translatable("tooltip.bbllights.shift").withStyle(ChatFormatting.YELLOW));
         }
     }
 }
