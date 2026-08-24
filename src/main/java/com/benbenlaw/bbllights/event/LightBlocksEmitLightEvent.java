@@ -7,7 +7,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.item.ItemStack;
@@ -65,7 +67,7 @@ public class LightBlocksEmitLightEvent {
                     double y = pos.getY() + 0.5;
                     double z = pos.getZ() + 0.5;
 
-                    level.addParticle(net.minecraft.core.particles.ParticleTypes.END_ROD, x, y, z, 0.0, 0.0, 0.0);
+                    level.addParticle(ParticleTypes.END_ROD, x, y, z, 0.0, 0.0, 0.0);
                 }
             }
         }
@@ -122,7 +124,7 @@ public class LightBlocksEmitLightEvent {
 
             String text = String.valueOf(label.lightLevel());
             float width = font.width(text) / 2f;
-            FormattedCharSequence sequence = FormattedCharSequence.forward(text, net.minecraft.network.chat.Style.EMPTY);
+            FormattedCharSequence sequence = FormattedCharSequence.forward(text, Style.EMPTY);
 
             event.getSubmitNodeCollector().submitText(
                     poseStack, -width, 0, sequence,
