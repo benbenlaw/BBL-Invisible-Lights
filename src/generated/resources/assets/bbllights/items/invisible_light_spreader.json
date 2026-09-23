@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "bbllights:block/invisible_light_spreader"
+  }
+}

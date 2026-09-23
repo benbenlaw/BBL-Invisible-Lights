@@ -1,6 +1,8 @@
 package com.benbenlaw.bbllights.item;
 
 import com.benbenlaw.bbllights.BBLLights;
+import com.benbenlaw.bbllights.block.BBLLightsBlocks;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -20,6 +22,8 @@ public class BBLLightsItems {
 
     public static final DeferredItem<Item> NETHERITE_INVISIBLE_LIGHT_PLACER = ITEMS.registerItem("netherite_invisible_light_placer",
             properties -> new LightItem(properties.durability(961)));
+
+    public static final DeferredItem<BlockItem> INVISIBLE_LIGHT_SPREADER = ITEMS.registerSimpleBlockItem(BBLLightsBlocks.INVISIBLE_LIGHT_SPREADER);
 
 }
 

@@ -23,6 +23,7 @@ public class BBLLightsCreativeTab {
                 output.accept(BBLLightsItems.IRON_INVISIBLE_LIGHT_PLACER.get().asItem().getDefaultInstance());
                 output.accept(BBLLightsItems.DIAMOND_INVISIBLE_LIGHT_PLACER.get().asItem().getDefaultInstance());
                 output.accept(BBLLightsItems.NETHERITE_INVISIBLE_LIGHT_PLACER.get().asItem().getDefaultInstance());
+                output.accept(BBLLightsItems.INVISIBLE_LIGHT_SPREADER.get().asItem().getDefaultInstance());
 
 
 

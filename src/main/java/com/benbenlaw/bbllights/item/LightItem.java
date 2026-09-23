@@ -1,5 +1,6 @@
 package com.benbenlaw.bbllights.item;
 
+import com.benbenlaw.bbllights.block.BBLLightsBlocks;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -66,10 +67,11 @@ public class LightItem extends Item {
         if (!level.isClientSide()) {
             BlockState current = level.getBlockState(lightPos);
 
-            if (current.is(Blocks.LIGHT)) {
+            // Blocks.LIGHT is still picked up here so lights placed by older versions of the mod can be removed again
+            if (current.is(BBLLightsBlocks.LIGHT.get()) || current.is(Blocks.LIGHT)) {
                 level.removeBlock(lightPos, false);
             } else if (current.canBeReplaced()) {
-                level.setBlockAndUpdate(lightPos, Blocks.LIGHT.defaultBlockState().setValue(LightBlock.LEVEL, lightLevel));
+                level.setBlockAndUpdate(lightPos, BBLLightsBlocks.LIGHT.get().defaultBlockState().setValue(LightBlock.LEVEL, lightLevel));
                 if (litItem.isDamageableItem()) {
                     litItem.hurtAndBreak(1, player, slot);
                 } else {

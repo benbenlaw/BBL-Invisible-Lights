@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bbllights:block/invisible_light_spreader"
+  }
+}

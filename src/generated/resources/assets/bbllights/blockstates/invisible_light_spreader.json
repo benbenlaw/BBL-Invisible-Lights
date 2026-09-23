@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bbllights:block/invisible_light_spreader"
+    }
+  }
+}

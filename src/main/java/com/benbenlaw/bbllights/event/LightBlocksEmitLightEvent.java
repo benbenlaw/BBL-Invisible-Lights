@@ -1,6 +1,7 @@
 package com.benbenlaw.bbllights.event;
 
 import com.benbenlaw.bbllights.BBLLights;
+import com.benbenlaw.bbllights.block.BBLLightsBlocks;
 import com.benbenlaw.bbllights.item.LightItem;
 import com.benbenlaw.bbllights.network.LightItemPacket;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -69,7 +70,7 @@ public class LightBlocksEmitLightEvent {
                     playerPos.offset(radius, radius, radius))) {
 
                 assert level != null;
-                if (level.getBlockState(pos).is(Blocks.LIGHT)) {
+                if (isLightBlock(level.getBlockState(pos))) {
 
                     lightBlockPositions.add(pos.immutable());
 
@@ -106,7 +107,7 @@ public class LightBlocksEmitLightEvent {
         for (BlockPos pos : lightBlockPositions) {
 
             BlockState state = mc.level.getBlockState(pos);
-            if (!state.is(Blocks.LIGHT)) continue;
+            if (!isLightBlock(state)) continue;
 
             int lightLevel = state.getValue(LightBlock.LEVEL);
 
@@ -136,6 +137,11 @@ public class LightBlocksEmitLightEvent {
         mc.renderBuffers().bufferSource().endBatch();
     }
 
+
+    // Blocks.LIGHT is still shown here so lights placed by older versions of the mod are still visible
+    private static boolean isLightBlock(BlockState state) {
+        return state.is(BBLLightsBlocks.LIGHT.get()) || state.is(Blocks.LIGHT);
+    }
 
     @SubscribeEvent
     public static void onMouseScroll(InputEvent.MouseScrollingEvent event) {

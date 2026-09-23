@@ -1,0 +1,4 @@
+// 26.1.2	2026-09-22T11:05:51.5980479	Tags for minecraft:block mod id bbllights
+867c9d03c956aaa57c3fa5e7baf51b3d3fe3e0d2 data/minecraft/tags/block/mineable/pickaxe.json
+8c30ae98d64ed018952c716e567d33ce588fe3d7 data/minecraft/tags/block/replaceable.json
+8c30ae98d64ed018952c716e567d33ce588fe3d7 data/minecraft/tags/block/replaceable_by_trees.json

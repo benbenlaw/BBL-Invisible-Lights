@@ -23,5 +23,7 @@ public class DataGenerators {
         generator.addProvider(true, new BBLLightsRecipes.Runner(packOutput, lookupProvider));
         generator.addProvider(true, new BBLLightsModelProvider(packOutput));
         generator.addProvider(true, new BBLLightsLangProvider(packOutput));
+        generator.addProvider(true, new BBLLightsLootTableProvider(packOutput, lookupProvider));
+        generator.addProvider(true, new BBLLightsBlockTagsProvider(packOutput, lookupProvider));
     }
 }
