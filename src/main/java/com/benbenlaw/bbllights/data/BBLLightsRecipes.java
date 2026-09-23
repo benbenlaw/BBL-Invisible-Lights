@@ -1,5 +1,6 @@
 package com.benbenlaw.bbllights.data;
 
+import com.benbenlaw.bbllights.block.BBLLightsBlocks;
 import com.benbenlaw.bbllights.item.BBLLightsItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -36,6 +37,18 @@ public class BBLLightsRecipes extends RecipeProvider {
 
     @Override
     protected void buildRecipes() {
+
+        // Invisible Light Spreader
+        shaped(RecipeCategory.MISC, BBLLightsBlocks.INVISIBLE_LIGHT_SPREADER.get())
+                .pattern("GIG")
+                .pattern("ILI")
+                .pattern("GIG")
+                .define('I', Tags.Items.INGOTS_IRON)
+                .define('G', Tags.Items.INGOTS_GOLD)
+                .define('L', BBLLightsItems.INVISIBLE_LIGHT.get())
+                .group("invisible_light")
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .save(output);
 
         // Invisible Light
         shapeless(RecipeCategory.MISC, BBLLightsItems.INVISIBLE_LIGHT.get(), 2)

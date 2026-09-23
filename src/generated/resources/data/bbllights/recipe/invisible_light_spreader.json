@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "invisible_light",
+  "key": {
+    "G": "#c:ingots/gold",
+    "I": "#c:ingots/iron",
+    "L": "bbllights:invisible_light"
+  },
+  "pattern": [
+    "GIG",
+    "ILI",
+    "GIG"
+  ],
+  "result": {
+    "id": "bbllights:invisible_light_spreader"
+  }
+}

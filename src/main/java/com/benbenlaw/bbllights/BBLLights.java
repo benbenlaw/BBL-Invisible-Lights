@@ -1,6 +1,5 @@
 package com.benbenlaw.bbllights;
 
-
 import com.benbenlaw.bbllights.block.BBLLightsBlockEntities;
 import com.benbenlaw.bbllights.block.BBLLightsBlocks;
 import com.benbenlaw.bbllights.config.BBLLightsConfig;
@@ -16,7 +15,6 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 @Mod(BBLLights.MOD_ID)
 public class BBLLights {
     public static final String MOD_ID = "bbllights";
@@ -30,7 +28,7 @@ public class BBLLights {
         BBLLightsCreativeTab.CREATIVE_MODE_TABS.register(eventBus);
         BBLLightsDataComponents.COMPONENTS.register(eventBus);
         eventBus.addListener(this::commonSetup);
-        modContainer.registerConfig(ModConfig.Type.COMMON, BBLLightsConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, BBLLightsConfig.SPEC, "bbl/invisible_lights.toml");
 
     }
 

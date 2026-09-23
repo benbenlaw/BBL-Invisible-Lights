@@ -7,5 +7,6 @@
   "item.bbllights.netherite_invisible_light_placer": "Netherite Invisible Light Placer",
   "itemGroup.bbllights": "BBL Invisible Lights",
   "tooltip.bbllights.light_level": "Will Place Light Level: %s",
+  "tooltip.bbllights.light_spreader": "Places Invisible Light Blocks around you in a %s radius",
   "tooltip.bbllights.shift": "Press SHIFT for more info"
 }

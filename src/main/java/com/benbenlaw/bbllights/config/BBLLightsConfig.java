@@ -15,7 +15,7 @@ public class BBLLightsConfig {
 
     public static final ModConfigSpec.IntValue RANGE = BUILDER
             .comment("How far in each direction the Invisible Light Spreader looks for dark spots")
-            .defineInRange("range", 16, 1, 64);
+            .defineInRange("range", 32, 1, 64);
 
     public static final ModConfigSpec.IntValue MINIMUM_LIGHT_LEVEL = BUILDER
             .comment("Spots with a block light level below this are considered dark")

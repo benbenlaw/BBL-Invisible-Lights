@@ -9,11 +9,7 @@ public class BBLLightsNetworking {
     public static void registerNetworking(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar(BBLLights.MOD_ID);
 
-
         //To Server From Client
         registrar.playToServer(LightItemPacket.TYPE, LightItemPacket.STREAM_CODEC, LightItemPacket::handle);
-
-
-
     }
 }

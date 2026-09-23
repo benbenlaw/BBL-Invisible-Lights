@@ -21,6 +21,8 @@ public class BBLLightsBlocks {
                     .strength(-1.0F, 3600000.8F)
                     .noLootTable()
                     .noOcclusion()
+                    .replaceable()
+                    .air()
                     .lightLevel(LightBlock.LIGHT_EMISSION));
 
 }

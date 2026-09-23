@@ -17,6 +17,7 @@ public class BBLLightsLangProvider extends LanguageProvider {
 
         add("tooltip.bbllights.light_level", "Will Place Light Level: %s");
         add("tooltip.bbllights.shift", "Press SHIFT for more info");
+        add("tooltip.bbllights.light_spreader", "Places Invisible Light Blocks around you in a %s radius");
 
         addItemTranslation("invisible_light", "Invisible Light");
         addItemTranslation("iron_invisible_light_placer", "Iron Invisible Light Placer");

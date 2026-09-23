@@ -1,9 +1,11 @@
-// 26.1.2	2026-09-21T17:36:39.7242214	BBLLights Recipes
+// 26.1.2	2026-09-23T08:22:37.2140807	BBLLights Recipes
 292b294a97cbb37a62fd152ad956b56aaa97e7c7 data/bbllights/advancement/recipes/misc/diamond_invisible_light_placer.json
 bb84deca9c90b496a86bceadf187659114b930dd data/bbllights/advancement/recipes/misc/invisible_light.json
+b97168ca9ff5dbad679d27842d3ffd340ec488bd data/bbllights/advancement/recipes/misc/invisible_light_spreader.json
 cf6acb2111bf54c54e07747f3fbc9a4fccd58254 data/bbllights/advancement/recipes/misc/iron_invisible_light_placer.json
 2f2a030e32c3b162dbbe867c0343806c2317d7fc data/bbllights/recipe/diamond_invisible_light_placer.json
 85c0dc009ae6b2ff4453c22d3fd49cd585942112 data/bbllights/recipe/invisible_light.json
+3f42f406f918ba2f0e4b33b799ae6b893ea6160e data/bbllights/recipe/invisible_light_spreader.json
 81198a22c296544fbfdba4b43a37215a9da1d578 data/bbllights/recipe/iron_invisible_light_placer.json
 9561ac24944dcfc6cb1b9beb542f1242fcd5d631 data/minecraft/advancement/recipes/misc/netherite_invisible_light_placer_smithing.json
 323e3bc65369bef221fd184b21be04a8fb75177f data/minecraft/recipe/netherite_invisible_light_placer_smithing.json
